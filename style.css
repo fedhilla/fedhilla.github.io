@@ -641,7 +641,7 @@ footer {
 }
 
 /* Mobile Size */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 600px) {
   /* Titles */
   .section-title {
     font-size: 1.3rem;
