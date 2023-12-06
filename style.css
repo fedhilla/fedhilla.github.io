@@ -157,7 +157,7 @@ li a {
 
 @media screen and (max-width: 890px) {
   .main-container {
-    width: 90%;
+    width: 80%;
   }
 }
 
@@ -519,7 +519,7 @@ footer {
   fill: #000;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 890px) {
   p {
     font-size: 0.9rem;
     line-height: 1.8;
