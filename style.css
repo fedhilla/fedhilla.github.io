@@ -451,12 +451,10 @@ li a {
 /* Contact Section */
 #contact {
   padding: var(--sectionPadding);
-  margin: 100px;
 }
 
 .contact {
   margin-top: 50px;
-  margin: 50px;
 }
 
 .contact h2,
