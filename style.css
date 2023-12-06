@@ -155,9 +155,9 @@ li a {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 895px) {
   .main-container {
-    width: 86%;
+    width: 88%;
   }
 }
 
