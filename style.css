@@ -53,7 +53,6 @@ nav {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #f1f1f1;
   display: inline-block;
   border: 3px solid #000000;
   border-radius: 50px;
@@ -245,7 +244,7 @@ li a {
 }
 
 .hero-name span {
-  color: var(--primaryIconColor) !important;
+  color: #bb9cc0 !important;
 }
 
 .hero-right img {
@@ -259,13 +258,12 @@ li a {
 .social {
   font-size: 20px;
   color: var(--primaryTextColor);
-  justify-content: center;
+  \
 }
 
 .social i {
   font-size: 30px;
   color: var(--primaryTextColor);
-  justify-content: center;
 }
 
 .hero-name span {
