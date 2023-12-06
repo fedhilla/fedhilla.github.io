@@ -151,11 +151,11 @@ li a {
 }
 
 .main-container {
-  width: 1200px;
+  width: 900px;
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
   .main-container {
     width: 90%;
   }
