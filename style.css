@@ -52,7 +52,6 @@ body {
 nav {
   position: sticky;
   top: 0;
-  width: 100%;
   display: inline-block;
   border: 3px solid #000000;
   border-radius: 50px;
