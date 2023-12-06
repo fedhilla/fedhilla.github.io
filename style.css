@@ -519,7 +519,7 @@ footer {
   fill: #000;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   p {
     font-size: 0.9rem;
     line-height: 1.8;
@@ -566,7 +566,7 @@ footer {
     height: 100vh;
     flex-direction: column;
     background: var(--primaryBackgroundColor);
-    border-left: 1px solid var(--borderColor);
+    border-left: 1px solid #fff;
     z-index: 9;
     transform: translateX(100%);
     transition: 0.2s ease-in-out;
@@ -641,7 +641,7 @@ footer {
 }
 
 /* Mobile Size */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 620px) {
   /* Titles */
   .section-title {
     font-size: 1.3rem;
