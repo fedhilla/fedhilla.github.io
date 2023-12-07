@@ -443,10 +443,6 @@ li a {
   margin-top: 1.5rem;
 }
 
-.skills-right {
-  display: flex;
-}
-
 .skills-right ul {
   line-height: 2rem;
   padding: 0 1rem;
@@ -455,7 +451,6 @@ li a {
 .skills-right p {
   line-height: 2rem;
   padding: 0 1rem;
-  margin-right:50px;
 }
 
 /* Contact Section */
