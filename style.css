@@ -448,6 +448,9 @@ li a {
   padding: 0 1rem;
 }
 
+.skills-right p {
+  display: flex;
+
 /* Contact Section */
 #contact {
   padding: var(--sectionPadding);
