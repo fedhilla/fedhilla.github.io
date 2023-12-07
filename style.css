@@ -448,6 +448,12 @@ li a {
   padding: 0 1rem;
 }
 
+.skills-right p {
+  line-height: 2rem;
+  padding: 0 1rem;
+  margin-right:50px;
+}
+
 /* Contact Section */
 #contact {
   padding: var(--sectionPadding);
@@ -654,4 +660,5 @@ footer {
   }
   .skills-right p {
     padding:0 0.2rem;
+    margin-right:50px;
 }
