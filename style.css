@@ -453,6 +453,10 @@ li a {
   padding: 0 1rem;
 }
 
+.skills-right {
+  display:flex;
+}
+
 /* Contact Section */
 #contact {
   padding: var(--sectionPadding);
