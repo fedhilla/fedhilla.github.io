@@ -448,11 +448,6 @@ li a {
   padding: 0 1rem;
 }
 
-.skills-right p {
-  line-height: 2rem;
-  padding: 0 1rem;
-}
-
 .skills-right {
   display: flex;
 }
