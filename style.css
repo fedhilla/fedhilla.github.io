@@ -652,4 +652,6 @@ footer {
   .pre-title {
     font-size: 0.7rem;
   }
+  .skills-right p {
+    padding:0 0.2rem;
 }
