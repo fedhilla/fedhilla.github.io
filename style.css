@@ -213,7 +213,7 @@ li a {
 .burger div {
   width: 25px;
   height: 2px;
-  background-color: #000;
+  background-color: var(--primaryTextColor);
   margin: 7px;
   transition: all 0.3s;
   z-index: 99;
@@ -441,6 +441,10 @@ li a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 1.5rem;
+}
+
+.skills-right {
+  display: flex;
 }
 
 .skills-right ul {
