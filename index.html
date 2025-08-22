@@ -45,41 +45,37 @@
       }
 
       nav {
-        position: fixed;      /* supaya tetap ada meski scroll */
-        display: block;
-        top: 15px;            /* jarak dari atas */
-        left: 50%;            /* posisikan di tengah */
-        transform: translateX(-50%); /* biar benar-benar center */
-        z-index: 1000;        /* biar gak ketutupan konten lain */
-
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+      
         border: 1.5px solid #000;
         border-radius: 30px;
-        padding: 8px 0;
-        text-align: center;
-        max-width: 600px;    
-        margin: 0 auto;
-        background: #f5f5f5;  /* kasih background biar gak transparan */
+        padding: 8px 20px; /* kasih padding horizontal biar lega */
+        background: #f5f5f5;
+        max-width: 90%;   /* jangan fixed 800px, biar fleksibel di layar kecil */
+        box-sizing: border-box;
       }
-
+      
       nav ul {
-        list-style: none;            /* hilangkan bullet */
+        list-style: none;
         margin: 0;
         padding: 0;
-        display: flex;               /* bikin sejajar horizontal */
-        justify-content: center;     /* rata tengah */
-        gap: 5px;                   /* jarak antar item menu */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* biar turun ke bawah kalau ga muat */
+        gap: 20px;       /* kasih jarak antar menu */
       }
-
-      nav ul li {
-        display: inline;
-      }
-
+      
       nav ul li a {
-        text-decoration: none;       /* hilangkan garis bawah */
-        color: #000;                 /* warna teks */
-        font-size: 12px;
-        transition: color 0.3s;      /* animasi hover */
+        text-decoration: none;
+        color: #000;
+        font-size: 14px; /* perkecil dikit biar muat */
+        white-space: nowrap; /* jangan sampai kata pecah */
       }
+
 
       nav ul li a:hover {
         color: #601791;              /* warna saat hover */
