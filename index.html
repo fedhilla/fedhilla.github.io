@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fedhilla Fieldhathama</title>
     <link rel="stylesheet" href="style.css" />
@@ -36,61 +37,566 @@
       rel="stylesheet"
       href="path/to/font-awesome/css/font-awesome.min.css"
     />
+    <style>
+      .main-container {
+        max-width: 1000px;   /* batas lebar halaman */
+        margin: 0 auto;      /* biar rata tengah */
+        padding: 0 20px;     /* jarak kiri-kanan biar gak mentok */
+      }
+
+      nav {
+        position: fixed;      /* supaya tetap ada meski scroll */
+        display: block;
+        top: 15px;            /* jarak dari atas */
+        left: 50%;            /* posisikan di tengah */
+        transform: translateX(-50%); /* biar benar-benar center */
+        z-index: 1000;        /* biar gak ketutupan konten lain */
+
+        border: 1.5px solid #000;
+        border-radius: 30px;
+        padding: 8px 0;
+        text-align: center;
+        max-width: 800px;    
+        margin: 0 auto;
+        background: #f5f5f5;  /* kasih background biar gak transparan */
+      }
+
+      nav ul {
+        list-style: none;            /* hilangkan bullet */
+        margin: 0;
+        padding: 0;
+        display: flex;               /* bikin sejajar horizontal */
+        justify-content: center;     /* rata tengah */
+        gap: 5px;                   /* jarak antar item menu */
+      }
+
+      nav ul li {
+        display: inline;
+      }
+
+      nav ul li a {
+        text-decoration: none;       /* hilangkan garis bawah */
+        color: #000;                 /* warna teks */
+        font-size: 12px;
+        transition: color 0.3s;      /* animasi hover */
+      }
+
+      nav ul li a:hover {
+        color: #601791;              /* warna saat hover */
+      }
+      .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+
+      /* Konten */
+      .content {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      /* Container untuk grid */
+      .portfolio-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 24px;
+      }
+
+      /* Card Portfolio */
+      .portfolio {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease;
+      }
+      .portfolio:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Cover */
+      .portfolio-cover img {
+        width: 100%;
+        object-fit: cover;    /* biar gak gepeng */
+        display: block;
+      }
+
+      /* Info */
+      .portfolio-info {
+        padding: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portfolio-title {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+
+      .portfolio-links {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .portfolio-link {
+        font-size: 0.85rem;
+        text-decoration: none;
+        background: #f3f4f6;
+        padding: 6px 12px;
+        border-radius: 6px;
+        color: #333;
+        text-align: justify;
+      }
+      .portfolio-link:hover {
+        background: #e5e7eb;
+      }
+
+      .portfolio-tags span {
+        display: grid;
+        font-size: 0.75rem;
+        background: #eef2ff;
+        color: #4f46e5;
+        padding: 6px 6px;
+        border-radius: 6px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+      }
+
+      .portfolio-tags{
+        justify-content: center;
+        margin-bottom: 6px;
+        margin-top: 6px;
+        margin-right: 6px;
+      }
+
+      .portfolio-desc {
+        font-size: 0.9rem;
+        color: #555;
+        margin-top: 5px; /* biar deskripsi rata bawah */
+        text-align: justify;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap');
+
+        :root {
+            --primary-color: #5d3fd3; /* Warna ungu */
+            --secondary-color: #a899d3; /* Warna ungu muda */
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+
+        .skills-container {
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 12px 6px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary-color) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .skill-card:hover .skill-name {
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Gaya untuk tombol CV baru */
+.cv-button {
+  display: inline-block;
+  text-align: center;
+  margin-top: auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #333;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cv-button:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+      
+    .section-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .experience-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .experience-icon {
+      color: #7b2ff7;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .experience-title {
+      color: #7b2ff7;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .experience-company {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .experience-date {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .experience-desc {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    /* ================== ACHIEVEMENT SECTION ================== */
+.achievement {
+  padding: 80px 0;
+  background-color: #f9fafb;
+}
+
+.achievement .achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.achievement .achievement-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.achievement .achievement-card:hover {
+  transform: translateY(-5px);
+}
+
+.achievement .achievement-year {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.achievement .achievement-desc {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ================== ORGANIZATION SECTION ================== */
+.organization {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.organization .organization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.organization .organization-card {
+  background: #f9fafb;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.organization .organization-card:hover {
+  transform: translateY(-5px);
+}
+
+.organization .organization-place {
+  font-size: 15px;
+  color: #555;
+  margin: 4px 0;
+}
+
+.organization .organization-year {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.organization .organization-desc {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Default burger disembunyikan (desktop) */
+.burger {
+  display: none;
+}
+
+/* Mobile: burger muncul, nav sembunyi */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: fixed;
+    top: 60px; /* kasih jarak dari atas (burger) */
+    left: 0;
+    width: 100%;
+    background: #f5f5f5;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 50%;
+    border-radius: 12px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 3px 0;
+    gap: 3px;
+  }
+
+  .burger {
+    display: flex;
+    position: fixed;
+    top: 5px;
+    right: 6px;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 3px;
+    padding: 5px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  }
+
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 3px;
+  }
+
+  /* Trick: kalau checkbox dicentang → nav tampil */
+  #burger-toggle:checked ~ nav {
+    display: block;
+  }
+}
+
+
+    </style>
   </head>
   <body>
     <header>
       <div class="main-container">
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Service</a></li>
-            <li><a href="#portfolios">Portofolio</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="burger">
+
+        <input type="checkbox" id="burger-toggle" hidden>
+        <label for="burger-toggle" class="burger">
           <div class="line-1"></div>
           <div class="line-2"></div>
           <div class="line-3"></div>
-        </div>
+        </label>
+
+        <nav>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#organization">Organization</a></li>
+            <li><a href="#portfolios">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
         <section id="hero" id="#home">
           <div class="hero-left">
             <h3 class="pre-title">My name is</h3>
             <h1 class="hero-name">Fedhilla <span>Fieldhathama</span></h1>
             <p>
-              Statistics Student at Diponegoro University | Assistant Lecturer
-              at Calculus 1 | Staff of Education and Research Division at
-              Himpunan Mahasiswa Statistika 2023 | Machine Learning and Data
-              Enthusiast
+              <strong style="font-size:20px;">Statistics at Universitas Diponegoro</strong><br>
+              <span style="font-weight:bold; font-size:16px;">Exploring Risk Analysis, Data Science, and Machine Learning</span>
             </p>
             <ul class="social">
               <li>
-                <a href="https://www.instagram.com/fedhilla07/" target="_blank"
-                  ><i class="fab fa-instagram" aria-hidden="true"></i
-                ></a>
+                <a href="https://www.instagram.com/fedhilla07/" target="_blank">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="https://www.github.com/fedhilla/" target="_blank"
-                  ><i class="fab fa-github" aria-hidden="true"></i
-                ></a>
+                <a href="https://www.github.com/fedhilla/" target="_blank">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/fedhilla-fieldhathama"
-                  ><i class="fab fa-linkedin" aria-hidden="true"></i
-                ></a>
+                <a href="https://www.linkedin.com/in/fedhilla-fieldhathama" target="_blank">
+                  <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
               </li>
+              <li>
+                <a href="https://rpubs.com/fedh" target="_blank">
+                  <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                </a>
+              </li>
+              <a href="https://drive.google.com/drive/folders/12gpjsFTmFosVei44HrghBAhCCQxxDalH?usp=sharing" download class="cv-button">Download CV</a>
             </ul>
           </div>
           <div class="hero-right"><img src="foto2.png" alt="my picture" /></div>
-        </section>
+          </section>
       </div>
     </header>
+
+        <!-- Skills & Education -->
+    <section>
+      <div class="skills main-container" id="about">
+        <h3 class="pre-title">About Me</h3>
+        <h1 class="section-title">Education</h1>
+
+        <div class="skills-grid">
+          <div class="skills-left">
+            <div class="education">
+              <div class="line">
+                <div></div>
+              </div>
+              <div class="education-info">
+                <h4 class="education-title">Universitas Diponegoro</h4>
+                <p>Bachelor's Degree - Statistics</p>
+                <h4 class="education-years">2022 - Present</h4>
+              </div>
+            </div>
+            <div class="education">
+              <div class="line">
+                <div></div>
+              </div>
+              <div class="education-info">
+                <h4 class="education-title">MA Negeri 1 Grobogan</h4>
+                <p>Mathematics and Science</p>
+                <h4 class="education-years">2019 - 2022</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-right" style="text-align: justify;">
+            <p>
+              A Final-year Statistics student at Universitas Diponegoro. 
+              Motivated to continuously learn and grow as a professional. 
+              Interested in fields such as data analysis, data science, 
+              and machine learning. Also has some experience in various 
+              data challenge competitions. Demonstrates a strong commitment
+              to learning, adapting to various situations, strong analytical
+              skills, and possesses decent technical skills at using
+              analytics tools such as Python, R, and Tableau.
+            </p,>
+        </div>
+      </div>
+    </section>
+    <!-- End Skills & Education  -->
+
+
     <!-- Services -->
     <section id="services">
       <div class="services main-container">
-        <h3 class="pre-title">Services</h3>
-        <h1 class="section-title services-title">Specialized In</h1>
+        <h3 class="pre-title">Technical Skills</h3>
+        <h1 class="section-title services-title">Specializations</h1>
 
         <div class="grid-3">
           <div class="service">
@@ -107,7 +613,7 @@
               </svg>
             </div>
             <h4>Data Analyst</h4>
-            <p>Analysis your data to help you make a decission</p>
+            <p>Analyze your data to help you make better decisions</p>
           </div>
 
           <div class="service">
@@ -124,7 +630,7 @@
               </svg>
             </div>
             <h4>Machine Learning</h4>
-            <p>Build your data with a accurate model</p>
+            <p>Build accurate models from your data</p>
           </div>
 
           <div class="service">
@@ -141,10 +647,9 @@
                 />
               </svg>
             </div>
-            <h4>Web Development</h4>
+            <h4>Risk Management</h4>
             <p>
-              Create and maintain your websites and also take care of its
-              performance and traffic capacity.
+              Quantitative Risk Management
             </p>
           </div>
         </div>
@@ -152,197 +657,673 @@
     </section>
     <!-- End Services -->
 
+    </br>
+  </br>
+
+    <!--skill-->
+    <section id="skills">
+    <div class="skills-container">
+        <h1 class="section-title">Skills</h1>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <span class="skill-name">Python</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Jupyter Notebook</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Tensorflow</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Keras</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Pandas</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Matplotlib</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Numpy</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Scikit-learn</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">R</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">SQL</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">SPSS</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Minitab</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">E-Views</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Stata</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Power BI</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Tableau</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Looker Studio</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Ms. Word</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Ms. Excel</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Ms. PowerPoint</span>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    </br>
+    </br>
+
+    <section class="section-container" id="experience">
+  <h3 class="pre-title">My Experience</h3>
+  <h1 class="section-title">Experience</h1>
+  <div class="experience-grid">
+    
+    <div class="experience-card">
+      <div class="experience-title">General Manager</div>
+      <div class="experience-company">Statistics Center and Statistics Center Survey Independent</div>
+      <div class="experience-date">2025</div>
+      <div class="experience-desc">
+        Led and supervised all divisions, managed end-to-end project execution, and ensured smooth operations.
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-title">Research Assistant</div>
+      <div class="experience-company">Department of Statistics, Universitas Diponegoro</div>
+      <div class="experience-date">2025</div>
+      <div class="experience-desc">
+        Conducted nationwide research on river water quality index across Indonesia using machine learning models including XGBoost, CatBoost, and Random Forest.
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-title">Data Analyst Division Intern</div>
+      <div class="experience-company">Dinas Pemberdayaan Perempuan, Perlindungan Anak, dan KB Grobogan</div>
+      <div class="experience-date">2025</div>
+      <div class="experience-desc">
+        Analyzed KB data, and performed clustering on MKJP patients and facilities.
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-title">Staff Data Analyst</div>
+      <div class="experience-company">Statistics Center and Statistics Center Survey Independent</div>
+      <div class="experience-date">2024</div>
+      <div class="experience-desc">
+        Led 4 data analytics projects, provided consultations on methodology, and created materials for the SC-SCSI blog.
+      </div>
+    </div>
+
+
+    <div class="experience-card">
+      <div class="experience-title">Freelance Data Analyst & Consultant</div>
+      <div class="experience-company">Self-employed</div>
+      <div class="experience-date">2023 – 2025</div>
+      <div class="experience-desc">
+        Delivered statistical analysis services, designed data collection methods, and collaborated with clients on projects.
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-title">Lab Assistant</div>
+      <div class="experience-company">Department of Statistics, Universitas Diponegoro</div>
+      <div class="experience-date">2023 – 2024</div>
+      <div class="experience-desc">
+        Assisted in teaching Categorical Data Analysis and Calculus I & II for classes of up to 70 students.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    
+    <br/>
+    <section class="achievement" id="achievements">
+  <div class="main-container">
+    <h3 class="pre-title">My Achievements</h3>
+    <h1 class="section-title">Achievements</h1>
+
+    <div class="achievement-grid">
+      
+      <div class="achievement-card">
+        <h5>3rd Winner – ANAVA Olympiad</h5>
+        <p class="achievement-year">2025</p>
+        <p class="achievement-desc">
+          Analyzed external factors, risks, and strategies for 3 financial assets using Johansen Cointegration, VECM, and VaR.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1NFOZcpCMfw1cL2Mith4at5m4H1GnlcEd/view?usp=sharing" target="_blank" class="portfolio-link">🏅 Certificate</a>
+                <a href="https://drive.google.com/drive/folders/1dnIufPrgxX2WfZA4RhZ_khmlIjnOP8Vy?usp=sharing" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>Semifinalist – SMATIC Olympiad</h5>
+        <p class="achievement-year">2025</p>
+        <p class="achievement-desc">
+          Path analysis explores whether character and cognitive variables interact in child development or act independently.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1uWO4A-TmGqPd4yjQf9KW8gC94VPlXqjZ/view?usp=drive_link" target="_blank" class="portfolio-link">🏅 Certificate</a>
+                <a href="https://drive.google.com/file/d/1YyPlGX8YsGgZKbjgB7daJ4X2o04i4rg4/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>3rd Winner – Doctor Data Olympiad</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Predicted and analyzed the impact of remittances on Indonesia’s manufacturing sector using Vector Error Correction Model.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1NFOZcpCMfw1cL2Mith4at5m4H1GnlcEd/view?usp=sharing" target="_blank" class="portfolio-link">🏅 Certificate</a>
+                <a href="https://drive.google.com/drive/folders/1dnIufPrgxX2WfZA4RhZ_khmlIjnOP8Vy?usp=sharing" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>PKM Funding Competition</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Researched risky sexual behavior among foster care adolescents using mixed methods under Social Cognitive Theory.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1S_he91IPZztxoOZ-PpgdTB-s5qMc7bFf/view?usp=drive_link" target="_blank" class="portfolio-link">🏅 Certificate</a>
+                <a href="https://drive.google.com/file/d/1-49PpBndWpoF-5BoZKi0-3sHFf4HxMsa/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>Semifinalist – Section 2.0 Business Case</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Proposed Syariah-based digital funding strategies for Bank Mega Syariah integrating AI and sustainable finance.
+        </p>
+        <div class="portfolio-links">
+               <a href="https://drive.google.com/file/d/1SKliSiYVgKgeXWL7pk-Uw6Isp42KB5Qs/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>Scientific Publication</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Published an article on risky sexual behavior among foster care adolescents using mixed-method analysis under Social Cognitive Theory framework.
+        </p>
+        <div class="portfolio-links">
+              <a href="https://doi.org/10.14710/jpki.20.2.89-95" target="_blank" class="portfolio-link">📄 Article</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>Intellectual Property Rights (HKI)</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Registered an HKI for a statistical research product, strengthening innovation and academic contribution.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1B0TrdQsKN49MTefmv9F9mCMPKCjZQbZW/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+                <a href="https://drive.google.com/file/d/1aZvFJy4sZ9G3F1DVi-q56jC7RYuXJvAU/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>International Seminar – Island of the World XIX</h5>
+        <p class="achievement-year">2024</p>
+        <p class="achievement-desc">
+          Presented research on coastal coral reef management and resilience conservation in Kupang, Lombok, integrating local traditions and climate strategies.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://docs.google.com/presentation/d/1vsLx-64En-cvBYOFImB6dFnnTIXKGMWN/edit?usp=drive_link&ouid=111957054207745574423&rtpof=true&sd=true" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <h5>Semifinalist – Data Analysis Competition</h5>
+        <p class="achievement-year">2023</p>
+        <p class="achievement-desc">
+          Built ML model using LightGBM to classify network attacks with 99.58% F1 score, top 15 in ASEAN.
+        </p>
+        <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1aQ_qt2DGF-napTTBtxHLNUxZf1aITK7r/view?usp=drive_link" target="_blank" class="portfolio-link">🏅 Certificate</a>
+                <a href="https://drive.google.com/file/d/16BqmVoZwhdL7vRE-c40cntpLbuZKe9k0/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Document</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Organization Section -->
+<section class="organization" id="organization">
+  <div class="main-container">
+    <h3 class="pre-title">My Organization</h3>
+    <h1 class="section-title">Organization Experience</h1>
+
+    <div class="organization-grid">
+
+      <div class="organization-card">
+        <h5>Event Coordinator</h5>
+        <p class="organization-place">Research School 1 – Himasta UNDIP</p>
+        <p class="organization-year">2024</p>
+        <p class="organization-desc">
+          Oversaw planning, logistics, and execution of the Research School event, ensuring smooth operations and successful outcomes.
+        </p>
+      </div>
+
+      <div class="organization-card">
+        <h5>Head of Organizing Committee</h5>
+        <p class="organization-place">Competition Workshop – Himasta UNDIP</p>
+        <p class="organization-year">2024</p>
+        <p class="organization-desc">
+          Led the planning, coordination, and execution of the workshop, managing committees and ensuring impactful event delivery.
+        </p>
+      </div>
+
+      <div class="organization-card">
+        <h5>Secretary II</h5>
+        <p class="organization-place">Kelompok Olimpiade Matematika dan IPA – UNDIP</p>
+        <p class="organization-year">2023 – 2024</p>
+        <p class="organization-desc">
+          Responsible for documentation, correspondence, and supporting administrative management of the organization.
+        </p>
+      </div>
+
+      <div class="organization-card">
+        <h5>Division Facilitator</h5>
+        <p class="organization-place">Pre-Basic Leadership Training – Himasta UNDIP</p>
+        <p class="organization-year">2023</p>
+        <p class="organization-desc">
+          Guided participants through leadership development sessions and facilitated group activities to enhance team-building skills.
+        </p>
+      </div>
+
+      <div class="organization-card">
+        <h5>Event Division Staff</h5>
+        <p class="organization-place">Diponegoro Science Competition – Research Incubator Center</p>
+        <p class="organization-year">2023</p>
+        <p class="organization-desc">
+          Supported logistics and event execution for a large-scale academic competition with participants from various universities.
+        </p>
+      </div>
+
+      <div class="organization-card">
+        <h5>Event Division Staff</h5>
+        <p class="organization-place">Research Gateway Seminar – Research Incubator Center</p>
+        <p class="organization-year">2023</p>
+        <p class="organization-desc">
+          Assisted in organizing a national seminar on research, coordinating speakers and ensuring smooth event flow.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <br/>
+
     <!-- Portfolios -->
     <section id="portfolios">
       <div class="portfolios main-container">
-        <h3 class="pre-title">My Works</h3>
-        <h1 class="section-title">Featured Portfolios</h1>
-        <br />
-        <h1 class="section-title">Website</h1>
+        <h3 class="pre-title">My Portofolios</h3>
+        <h1 class="section-title">Research & Projects</h1>
+        <h1 class="section-title">Portfolio Optimation</h1>
         <div class="grid-3">
           <!-- Portfolio 1 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
               <img src="projek1.png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Foundation Forge</h4>
-                <a
-                  href="http://foundationforge.infinityfreeapp.com/"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">OPTIMALISASI PORTOFOLIO OBLIGASI MELALUI PENGELOMPOKAN
+                RASIO KEUANGAN DENGAN K-MEANS DAN ANALISIS DURASI MACAULAY</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1g2W-Prw3bhhkLh7zpoDB36SyLz08RRpk/view?usp=sharing" target="_blank" class="portfolio-link">📄 Artikel</a>
+                <a href="https://docs.google.com/spreadsheets/d/1Gq7YHw3M8EZd8B7Y-u4Tyw7nHiuLe2ew/edit?usp=sharing&ouid=111957054207745574423&rtpof=true&sd=true" target="_blank" class="portfolio-link">💻 Repository</a>
               </div>
-              <div class="portfolio-tags">
-                <div>HTML</div>
-                <div>CSS</div>
-                <div>JS</div>
-              </div>
-              <p>
-                Program Foundation Forge Kelas Elevate Minds memiliki tujuan
-                utama untuk membantu siswa-siswi yang berkelas meningkatkan
-                pemahaman mereka terhadap materi-materi akademis yang relevan.
+              <p class="portfolio-desc">
+                This study aims to optimize a bond portfolio by clustering financial ratios using the K-Means
+                method and analyzing Macaulay duration. From a selection of bonds issued by companies listed in the
+                MNC36 Index, two bonds BBNI and TBIG were identified through clustering based on current ratio, debt-
+                to-equity ratio, and leverage ratio.
               </p>
+              <div class="portfolio-tags">
+                <span>Macaulay</span><span>K-Means</span><span>Bond</span>
+              </div>
             </div>
           </div>
+        </div>
+
 
           <!-- Portfolio 2 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="projek2.png" alt="Portfolio 1" />
+              <img src="projek3 (2).png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Payment Page</h4>
-                <a
-                  href="https://github.com/fedhilla/Payment"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">PERBANDINGAN METODE MVEP, SIM, CAPM, NSGA-II PEMBENTUKAN PORTOFOLIO</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1l1GKq7bbGmQxxdZtxnBCz7Gbmb58TP-5/view?usp=sharing" target="_blank" class="portfolio-link">📄 Artikel</a>
+                <a href="https://rpubs.com/fedh/optimasi-portofolio-4metode" target="_blank" class="portfolio-link">💻 Repository</a>
               </div>
-              <div class="portfolio-tags">
-                <div>HTML</div>
-                <div>CSS</div>
-              </div>
-              <p>
-                Card tersebut digunakan untuk membayar jika ingin dilakukan
-                pemesanan pada Foundation Forge
+              <p class="portfolio-desc">
+                Analyzed and compared the performance of four portfolio optimization methods—Minimum Variance Efficient Portfolio (MVEP), Single Index Model (SIM), Capital Asset Pricing Model (CAPM), and Non-dominated Sorting Genetic Algorithm II (NSGA-II). The study evaluated the trade-off between return and risk to recommend optimal investment strategies.
               </p>
+              <div class="portfolio-tags">
+                <span>MVEP</span><span>NSGA-II</span><span>CPAM</span><span>SIM</span>
+              </div>
             </div>
           </div>
+        </div>
 
           <!-- Portfolio 3 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="portofolio.png" alt="Portfolio 1" />
+              <img src="projek2 (2).png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Website Portfolio</h4>
-                <a
-                  href="https://github.com/fedhilla/my-website"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Metode Hibrida Deep Learning untuk Multi Period Multi Objective Optimasi Portofolio</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1QnC2KO2OJUBhn0yrokDaMYmBFf8H7KMQ/view?usp=sharing" target="_blank" class="portfolio-link">📄 Artikel</a>
+                <a href="https://github.com/fedhilla/MPMOPO/blob/main/MPMOPO.ipynb" target="_blank" class="portfolio-link">💻 Repository</a>
               </div>
-              <div class="portfolio-tags">
-                <div>HTML</div>
-                <div>CSS</div>
-                <div>JS</div>
-              </div>
-              <p>
-                Website pribadi yang berisi mengenai projek-projek yang sudah
-                pernah saya laksanakan
+              <p class="portfolio-desc">
+                Developed a hybrid portfolio optimization model by integrating deep 
+                learning techniques (LSTM, GRU, and CNN) for financial forecasting with 
+                a multi-period, multi-objective framework. The research successfully balanced 
+                maximizing returns while controlling risk and distribution of profits, proving 
+                that the predictive approach yielded more realistic and adaptive investment 
+                strategies than traditional methods based on historical data.
               </p>
+              <div class="portfolio-tags">
+                <span>LSTM</span><span>CNN</span><span>MPMOPO</span>
+              </div>
             </div>
           </div>
+        </div>
+        </div>
+        <br />
+        
+        <!-- Portfolio Risk Management -->
+        <h1 class="section-title">Risk Management</h1>
+        <div class="grid-3">
+          <!-- Portfolio 1 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="delta.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">IMPLEMENTASI METODE DELTA-GAMMA DALAM PERHITUNGAN VALUE
+                AT RISK (VAR) UNTUK PORTOFOLIO OBLIGASI PEMERINTAH BERBASIS
+                DURASI MACULAY DAN KONVEKSITAS</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1borKWmCMlTff4JnlqOD8EM-g7aatSjX7/view?usp=sharing" target="_blank" class="portfolio-link">📄 Artikel</a>
+              </div>
+              <p class="portfolio-desc">
+                This paper applies the Delta-Gamma method to calculate Value at Risk (VaR) for government bond portfolios, incorporating Macaulay duration and convexity for enhanced accuracy. Using FR0100 and FR0101 bond data (December 2023-December 2024), the study demonstrates that this approach provides robust risk evaluation and aids in optimizing investment decisions.
+              </p>
+              <div class="portfolio-tags">
+                <span>Delta-Gamma</span><span>Macaulay</span><span>Konveksitas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <!-- Portfolio 2 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="manrisk.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Risk Management of SMGR Stock Using Value-at-Risk Methods</h4>
+              <div class="portfolio-links">
+                <a href="https://docs.google.com/spreadsheets/d/1Bx-fGSOSyntWG9CH4wCdXQclaVX9wdYc/edit?usp=drive_link&ouid=111957054207745574423&rtpof=true&sd=true" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
+                This project analyzes SMGR stock risk using four Value-at-Risk (VaR) methods Cornish-Fisher, Historical Simulation, Variance-Covariance, and Monte Carlo. It compares downside risk under different assumptions, offering insights into method reliability and suitability for SMGR’s volatility.
+              </p>
+              <div class="portfolio-tags">
+                <span>ECF</span><span>Monte-Carlo</span><span>Varcov</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Portfolio 3 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="stok.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">ANALISIS IMPLIKASI JANGKA PANJANG MATRIKS TRANSISI MARKOV
+                CHAIN TERHADAP STABILITAS KREDIT MELALUI PERINGKAT
+                OBLIGASI PT PEFINDO TAHUN 2023</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1pzL5XNjvsXEFK3UwYqVNM89qIHF8WgRw/view?usp=sharing" target="_blank" class="portfolio-link">📄 Artikel</a>
+              </div>
+              <p class="portfolio-desc">
+                This analyzes the long-term implications of corporate bond rating 
+                changes by PT PEFINDO (2007-2023) on credit stability using a Markov Chain model. 
+                The study concludes that high-rated bonds tend to be stable, while middle and low-
+                rated bonds have a higher probability of downgrade or reaching maturity.
+              </p>
+              <div class="portfolio-tags">
+                <span>Markov Chain</span><span>Obligasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <br />
+
+        <!-- Portfolio Machine Learning -->
+        <h1 class="section-title">Machine Learning</h1>
+        <div class="grid-3">
+                    <!-- Portfolio 1 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="ml7.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Deteksi Kerusakan Jalan Yolov8</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1qGMUoaI__Wg1E0MLhGv_moxAkqRlZZev/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Demo</a>
+                <a href="https://drive.google.com/file/d/1aSXKxpYxhlS4f-qI3S0UxrF63UJlBtGz/view?usp=drive_link" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
+                Water Feasibility Prediction
+              </p>
+              <div class="portfolio-tags">
+                <span>LigthGBM</span><span>Python</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Portfolio 2 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="ML4.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Water Feasibility Prediction</h4>
+              <div class="portfolio-links">
+                <!--<a href="https://drive.google.com/file/d/1g2W-Prw3bhhkLh7zpoDB36SyLz08RRpk/view?usp=sharing" target="_blank" class="portfolio-link">📄 Demo</a>!-->
+                <a href="https://github.com/fedhilla/Water-Feasibility-Prediction/blob/main/DSC_(1).ipynb" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
+                Water Feasibility Prediction
+              </p>
+              <div class="portfolio-tags">
+                <span>LigthGBM</span><span>Python</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <!-- Portfolio 2 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="ML3.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Weather Forecasting</h4>
+              <div class="portfolio-links">
+                <a href="https://github.com/fedhilla/Water-Forecasting" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
+                Weather Forecasting
+              </p>
+              <div class="portfolio-tags">
+                <span>LigthGBM</span><span>Python</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Portfolio 3 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="ml8.png" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Agricultural Sales Insights & Strategy</h4>
+              <div class="portfolio-links">
+                <a href="https://colab.research.google.com/drive/1DS-McB6rra6XoeC0cixCLIjqtyahzKNL?usp=sharing" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
+                Sales peak in April and July, driven by seasonal farming needs, loyal farmer demand, and strong preference for corn products, highlighting the need for focused training and inventory strategies.
+              </p>
+              <div class="portfolio-tags">
+                <span>Maculay</span><span>K-Means</span><span>Bond</span>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
         <br />
         <br />
 
-        <h1 class="section-title">Desain</h1>
-        <br />
+        <!-- Portfolio Data Visualisation - Dashboard-->
+        <h1 class="section-title">Data Visualisation - Dashboard</h1>
         <div class="grid-3">
-          <!-- Portfolio 4 -->
+          <!-- Portfolio 1 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="Statdat.png" alt="Portfolio 1" />
+              <img src="ML1.png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Infografis Rabies</h4>
-                <a
-                  href="https://github.com/fedhilla/Infografis-Rabies/blob/main/Salinan%20dari%20Salinan%20dari%20SIC-1%20-%20Diva%20Fitri%20Syadean.png"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Dashboard Stunting</h4>
+              <div class="portfolio-links">
+                <a href="https://public.tableau.com/views/020DSCRS2023_1/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" target="_blank" class="portfolio-link">📄 Demo</a>
+                <a href="https://github.com/fedhilla/Stunting-Clustering-" target="_blank" class="portfolio-link">💻 Repository</a>
               </div>
-              <div class="portfolio-tags">
-                <div>Adobe</div>
-                <div>Tableau</div>
-              </div>
-              <p>
-                Rabies merupakan penyakit zoonosis yang disebabkan oleh virus
-                rabies dan bersifat sangat fatal. Virus rabies bisa menular
-                melalui air liur, gigitan, atau cakaran hewan yang tertular
-                rabies. Rabies hampir selalu berakibat fatal meskipun infeksinya
-                dapat dicegah menggunakan Vaksin Anti Rabies (VAR).
+              <p class="portfolio-desc">
+                Tingkat Stunting di Wilayah: Sebuah pie chart yang menunjukkan
+                persentase stunting berdasarkan umur. Dengan begitu, kita dapat
+                melihat pola stunting yang berbeda antara usia yang berbeda.
               </p>
+              <div class="portfolio-tags">
+                <span>Tableau</span>
+              </div>
             </div>
           </div>
+        </div>
+        </div>
+        <br />
+        <br />
 
-          <!-- Portfolio 5 -->
+        <!-- Portfolio Data Visualisation - Infographics-->
+        <h1 class="section-title">Data Visualisation - Infographics</h1>
+        <div class="grid-3">
+          <!-- Portfolio 1 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="DAC.jpg" alt="Portfolio 1" />
+              <img src="info1.jpeg" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>
-                  Multiclass Classification using Light Gredient Booster Machine
-                </h4>
-                <a
-                  href="https://github.com/fedhilla/-Multiclass-Classification-using-Light-Gredient-Booster-Machine/blob/main/DAC-01-0117_Masih%20Pemula_Infographic_20231025_112648_0000.pdf"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Sustainable Investment: Investasi Cerdas, Masa Depan Jelas</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1Run3Laxb6Aa-z6P60GzUYjWrrNAGoBOn/view?usp=sharing" target="_blank" class="portfolio-link">📄 Infographic</a>
               </div>
+              <p class="portfolio-desc">
+                Experienced in analyzing sustainable investment trends focusing on Environmental, 
+                Social, and Governance (ESG) aspects. Capable of evaluating investment performance 
+                based on ESG scores and conventional investment comparisons. Skilled in identifying 
+                and managing challenges and risks associated with sustainable investing, including 
+                regulatory complexities and market volatility.
+
+              </p>
               <div class="portfolio-tags">
-                <div>Python</div>
-                <div>Tableau</div>
+                <span>Canva</span><span>Forecasting</span>
               </div>
-              <p>
+            </div>
+          </div>
+        </div>
+
+
+          <!-- Portfolio 2 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
+          <div class="portfolio">
+            <div class="portfolio-cover">
+              <img src="info2.jpg" alt="Portfolio 1" />
+            </div>
+            <div class="portfolio-info">
+              <h4 class="portfolio-title">Multiclass Classification using Light Gredient Booster Machine</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1Q-6b5cFwIQbtFJGJkgt850PKnTA8NvMP/view?usp=drive_link" target="_blank" class="portfolio-link">📄 Infographic</a>
+                <a href="https://github.com/fedhilla/Network-Security-Analysis/blob/main/first_try.ipyn" target="_blank" class="portfolio-link">💻 Repository</a>
+              </div>
+              <p class="portfolio-desc">
                 The rapid evolution of information technology has propelled the
                 telecommunications sector in Indonesia, fostering connectivity,
                 information accessibility, and community empowerment. With the
@@ -350,250 +1331,129 @@
                 Emas 2045," advancements in internet connectivity and data
                 transfer speed are transforming global communication.
               </p>
-            </div>
-          </div>
-
-          <!-- Portfolio 6 -->
-          <div class="portfolio">
-            <div class="portfolio-cover">
-              <img src="projek3.png" alt="Portfolio 1" />
-            </div>
-            <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Dashboard Stunting</h4>
-                <a
-                  href="https://public.tableau.com/views/020DSCRS2023_1/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
-              </div>
               <div class="portfolio-tags">
-                <div>Tableau</div>
+                <span>LigthGBM</span><span>Networtk Classification</span>
               </div>
-              <p>
-                Tingkat Stunting di Wilayah: Sebuah pie chart yang menunjukkan
-                persentase stunting berdasarkan umur. Dengan begitu, kita dapat
-                melihat pola stunting yang berbeda antara usia yang berbeda.
-              </p>
             </div>
           </div>
         </div>
 
-        <h1 class="section-title">Machine Learning</h1>
-        <div class="grid-3">
-          <!-- Portfolio 7 -->
+        <!-- Portfolio 3 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="ML1.png" alt="Portfolio 1" />
+              <img src="info3.jpeg" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Stunting Clustering</h4>
-                <a
-                  href="https://github.com/fedhilla/Stunting-Clustering-"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Smart Grid Revolution</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/14O28iQKKy0Id7G_BkqyOtv6BTpdMtBwL/view?usp=sharing" target="_blank" class="portfolio-link">📄 Infographic</a>
               </div>
+              <p class="portfolio-desc">
+                Analyzed the role of smart grid systems and big data
+                analytics in optimizing renewable energy potential
+                to support a sustainable green economy. Utilized data
+                modeling techniques to evaluate renewable energy targets
+                and demonstrated the feasibility of achieving national clean
+                energy goals in Indonesia. This work highlights skills in 
+                technical analysis, data interpretation, and strategic planning
+                for energy transition.
+              </p>
               <div class="portfolio-tags">
-                <div>Python</div>
+                <span>Forecasting</span><span>GWR</span><span>VAR</span>
               </div>
-              <p>Stunting Clustering</p>
             </div>
           </div>
+        </div>
 
-          <!-- Portfolio 8 -->
+          <!-- Portfolio 4 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="ML2.png" alt="Portfolio 1" />
+              <img src="info4.jpeg" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Network Security Analaysis</h4>
-                <a
-                  href="https://github.com/fedhilla/Network-Security-Analysis/blob/main/first_try.ipynb"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Infografis Rabies</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1Wp5vsSAW8b2xnUOfqe5w4rBb5CcqPzwa/view?usp=sharing" target="_blank" class="portfolio-link">📄 Infographic</a>
               </div>
+              <p class="portfolio-desc">
+                Rabies merupakan penyakit zoonosis yang disebabkan oleh virus
+                rabies dan bersifat sangat fatal. Virus rabies bisa menular
+                melalui air liur, gigitan, atau cakaran hewan yang tertular
+                rabies. Rabies hampir selalu berakibat fatal meskipun infeksinya
+                dapat dicegah menggunakan Vaksin Anti Rabies (VAR).
+              </p>
               <div class="portfolio-tags">
-                <div>Python</div>
+                <span>Tableau</span><span>Regression</span><span>Canva</span>
               </div>
-              <p>Network Security Analysis in Indonesia</p>
             </div>
           </div>
+        </div>
+        
 
-          <!-- Portfolio 9 -->
+        <!-- Portfolio 5 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="ML3.png" alt="Portfolio 1" />
+              <img src="infog5.png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Wheater Forecasting</h4>
-                <a
-                  href="https://github.com/fedhilla/Water-Forecasting"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Infografis Hasil Kuesioner Kompos Sosialisasi KKN</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1QZjgic4JzUG6GF2jNGl8XUUjjBnzA7rs/view?usp=sharing" target="_blank" class="portfolio-link">📄 Infographic</a>
               </div>
+              <p class="portfolio-desc">
+                Sosialisasi pengolahan limbah organik menjadi kompos efektif meningkatkan pemahaman peserta. Hal ini dibuktikan dengan hasil kuesioner dan analisis data Uji Binomial 2 arah yang menunjukkan peningkatan signifikan secara statistik (p-value < sig. 1,53x10^-5 < 0,05).
+              </p>
               <div class="portfolio-tags">
-                <div>Python</div>
+                <span>Uji Tanda Binomial Dua Arah</span>
               </div>
-              <p>Wheater Forecasting</p>
             </div>
           </div>
+        </div>
 
-          <!--Portfolio 4-->
+        <!-- Portfolio 6 -->
+          <div class="portfolio-container">
+          <!-- 1 card -->
           <div class="portfolio">
             <div class="portfolio-cover">
-              <img src="ML4.png" alt="Portfolio 1" />
+              <img src="info6.png" alt="Portfolio 1" />
             </div>
             <div class="portfolio-info">
-              <div class="portfolio-title">
-                <h4>Water Feasibility Prediction</h4>
-                <a
-                  href="https://github.com/fedhilla/Water-Feasibility-Prediction/blob/main/DSC_(1).ipynb"
-                  class="portfolio-link"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 17c2.269-9.881 11-11.667 11-11.667v-3.333l7 6.637-7 6.696v-3.333s-6.17-.171-11 5zm12 .145v2.855h-16v-12h6.598c.768-.787 1.561-1.449 2.339-2h-10.937v16h20v-6.769l-2 1.914z"
-                    />
-                  </svg>
-                </a>
+              <h4 class="portfolio-title">Infografis Hasil Kuesioner POC Sosialisasi KKN</h4>
+              <div class="portfolio-links">
+                <a href="https://drive.google.com/file/d/1CR46yyes-VcdfVINfs-OI5Ptilj310Il/view?usp=sharing" target="_blank" class="portfolio-link">📄 Infographic</a>
               </div>
+              <p class="portfolio-desc">
+                Sosialisasi pembuatan Pupuk Organik Cair (POC) dari limbah organik terbukti efektif meningkatkan pengetahuan peserta. Hal ini didukung oleh hasil kuesioner yang menunjukkan peningkatan signifikan pengetahuan responden dan analisis data dengan Uji Binomial 2 arah yang menghasilkan p-value < sig. (2,38 x 10^-7 < 0,05).
+              </p>
               <div class="portfolio-tags">
-                <div>Python</div>
+                <span>Uji Tanda Binomial Dua Arah</span>
               </div>
-              <p>Water Feasibility Prediction</p>
             </div>
           </div>
+        </div>
+
+        </div>
+        </div>
+
         </div>
       </div>
     </section>
     <!-- End Portfolios -->
 
-    <!-- Skills & Education -->
-    <section>
-      <div class="skills main-container" id="about">
-        <h3 class="pre-title">About Me</h3>
-        <h1 class="section-title">Skills & Education</h1>
-
-        <div class="skills-grid">
-          <div class="skills-left">
-            <div class="education">
-              <div class="line">
-                <div></div>
-              </div>
-              <div class="education-info">
-                <h4 class="education-title">Undip University</h4>
-                <p>Bachelor's Degree - Statistics</p>
-                <h4 class="education-years">2022 - Now</h4>
-              </div>
-            </div>
-            <div class="education">
-              <div class="line">
-                <div></div>
-              </div>
-              <div class="education-info">
-                <h4 class="education-title">MA Negeri 1 Grobogan</h4>
-                <p>Mathematics and Science</p>
-                <h4 class="education-years">2019 - 2022</h4>
-              </div>
-            </div>
-          </div>
-
-          <div class="skills-right">
-            <p>
-              Hello, I'm Fedhilla! I am currently pursuing a Bachelor of
-              Statistics at Diponegoro University. Now, I work as Assitent
-              Lecturer of Calculus 1. I have an interest in research and gained
-              valuable experience as an Education and Research Staff at the
-              Statistics Student Association and a Human Resource Development
-              staff at the Research Incubator Center. I have very good skills in
-              writing, research, and managing data, also proficient in several
-              statistical software such as SPSS, R, Python, Minitab, Tableau. I
-              am excited to contribute my skills to the field of data analysis
-              and research.
-            </p>
-
-            <div class="skills-list">
-              <ul>
-                <li>JS</li>
-                <li>CSS</li>
-                <li>HTML</li>
-                <li>SPSS</li>
-                <li>Bootstrap</li>
-              </ul>
-            </div>
-            <div class="skills-list">
-              <ul>
-                <li>R</li>
-                <li>Python</li>
-                <li>Tableau</li>
-                <li>Minitab</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Skills & Education  -->
-
     <!-- Contact -->
     <section id="contact">
       <div class="contact main-container">
-        <h2>Contact Me</h2>
+        <h3>Contact Me</h3>
         <br />
         <p>You can reach me out</p>
         <br />
-        <ion-icon name="mail-outline"></ion-icon>
-        <h5>frdhillafieldhathama@gmail.com</h5>
+        <ion-icon name="mail-outline"></ion-icon><h5>frdhillafieldhathama@gmail.com</h5>
         <p>or via socials below:</p>
         <ul class="social">
           <li>
@@ -613,6 +1473,11 @@
               ><i class="fab fa-linkedin" aria-hidden="true"></i
             ></a>
           </li>
+          <li>
+                <a href="https://rpubs.com/fedh" target="_blank">
+                  <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                </a>
+          </li>
         </ul>
       </div>
     </section>
@@ -620,7 +1485,7 @@
 
     <!-- Fomter -->
     <footer>
-      <p>&#169; 2023 - Fedhilla 🩷🩷 with love. All Right Reserved</p>
+      <p>&#169; 2025 - Fedhilla 🩷🩷 with love</p>
     </footer>
     <!-- End Footer -->
 
