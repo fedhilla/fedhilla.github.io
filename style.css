@@ -91,27 +91,6 @@ li a {
   margin-top: 30px;
 }
 
-nav {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  border: 3px solid #000000;
-  border-radius: 50px;
-  animation: slide-in 1s ease-out;
-}
-
-ul {
-  position: relative;
-  display: flex;
-  flex: 1 1 auto;
-  margin: 0;
-  padding: 0 30px;
-  list-style-type: none;
-  color: #bb9cc0;
-}
-
 li:not(:last-child) {
   margin-right: 40px;
   li {
